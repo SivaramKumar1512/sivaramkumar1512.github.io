@@ -59,11 +59,11 @@ const CONFIG = {
   // fits, no need for a photo matching each specific story beat (those
   // already live in the love letter + memory match icons above).
   photos: [
-    { src: "photo1.jpg", caption: "Namma rendu peru 💜", emoji: "💜" },
-    { src: "photo2.webp", caption: "Unna paakkum pothe ellam smile vandhuchu 😊", emoji: "😊" },
-    { src: "photo3.jpg", caption: "Enga best memories ellam ippadithaan 🤍", emoji: "🤍" },
-    { src: "photo4.webp", caption: "Namma pannicha first outing 🧡", emoji: "🧡" },
-    { src: "photo5.jpg", caption: "Enga oru chinna world 🤍", emoji: "🤍" },
+    { src: "assets/photo1.jpg", caption: "Namma rendu peru 💜", emoji: "💜" },
+    { src: "assets/photo2.webp", caption: "Unna paakkum pothe ellam smile vandhuchu 😊", emoji: "😊" },
+    { src: "assets/photo3.jpg", caption: "Enga best memories ellam ippadithaan 🤍", emoji: "🤍" },
+    { src: "assets/photo4.webp", caption: "Namma pannicha first outing 🧡", emoji: "🧡" },
+    { src: "assets/photo5.jpg", caption: "Enga oru chinna world 🤍", emoji: "🤍" },
   ],
 
   // ---- Final reveal: the love letter (each string = one paragraph) --------
