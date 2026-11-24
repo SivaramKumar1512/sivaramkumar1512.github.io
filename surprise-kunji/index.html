@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Kunji 💜</title>
+<meta name="description" content="A little puzzle made with love." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%9C%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<div id="heart-field"></div>
+
+<div class="progress-dots" id="progressDots" aria-hidden="true">
+  <span class="dot" data-stage="1"></span>
+  <span class="dot" data-stage="2"></span>
+  <span class="dot" data-stage="3"></span>
+  <span class="dot" data-stage="4"></span>
+  <span class="dot" data-stage="5"></span>
+</div>
+
+<main class="app" id="app">
+
+  <!-- Splash -->
+  <section class="stage active" id="stage-splash">
+    <p class="eyebrow reveal">a little something for</p>
+    <h1 class="script-font glow reveal" id="splashName">Kunji</h1>
+    <p class="lead reveal">Before your birthday gift, there's a journey to go through.<br/>Five little steps. One big surprise.</p>
+    <button class="btn-main reveal" id="startBtn">Begin the Journey 💜</button>
+  </section>
+
+  <!-- Stage 1: Trivia -->
+  <section class="stage" id="stage-1">
+    <p class="stage-label">Stage 1 · Do you know us?</p>
+    <div id="triviaContainer"></div>
+  </section>
+
+  <!-- Stage 2: Riddle -->
+  <section class="stage" id="stage-2">
+    <p class="stage-label">Stage 2 · Solve the riddle</p>
+    <p class="riddle-text" id="riddleQuestion"></p>
+    <form id="riddleForm" class="answer-form" autocomplete="off">
+      <input type="text" id="riddleInput" placeholder="Your answer..." />
+      <button type="submit" class="btn-main small">Answer</button>
+    </form>
+    <p class="hint-text" id="riddleHint"></p>
+    <button class="btn-ghost" id="riddleHintBtn" type="button">Need a hint?</button>
+  </section>
+
+  <!-- Stage 3: Memory match -->
+  <section class="stage" id="stage-3">
+    <p class="stage-label">Stage 3 · Match the memories</p>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <button class="btn-main" id="continueFrom3" style="display:none">Continue 💜</button>
+  </section>
+
+  <!-- Stage 4: Unscramble -->
+  <section class="stage" id="stage-4">
+    <p class="stage-label">Stage 4 · Spell it out</p>
+    <p class="lead">Tap the letters in the right order.</p>
+    <div class="answer-slots" id="answerSlots"></div>
+    <div class="letter-tiles" id="letterTiles"></div>
+    <button class="btn-main" id="continueFrom4" style="display:none">Continue 💜</button>
+  </section>
+
+  <!-- Stage 5: Hold to unlock -->
+  <section class="stage" id="stage-5">
+    <p class="stage-label">Stage 5 · The final step</p>
+    <p class="lead">Press and hold to unlock your surprise.</p>
+    <button class="hold-btn" id="holdBtn">
+      <span class="hold-fill" id="holdFill"></span>
+      <span class="hold-label">Hold Me 💝</span>
+    </button>
+  </section>
+
+  <!-- Final reveal -->
+  <section class="stage" id="stage-final">
+    <h1 class="script-font glow reveal">Happy Birthday<br/>Kunji 💜</h1>
+
+    <div class="countdown" id="countdown"></div>
+
+    <div class="photo-gallery" id="photoGallery"></div>
+
+    <div class="love-letter" id="loveLetter"></div>
+
+    <div class="surprise-box">
+      <button class="btn-main" id="surpriseBtn">🎁 Tap for one more surprise</button>
+      <p class="surprise-text" id="surpriseText" style="display:none"></p>
+    </div>
+
+    <p class="signature script-font" id="signature"></p>
+
+    <button class="btn-ghost" id="replayBtn">Replay ↺</button>
+  </section>
+
+</main>
+
+<canvas id="confettiCanvas"></canvas>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
