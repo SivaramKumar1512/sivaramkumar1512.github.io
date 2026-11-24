@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>For Kunji 💜</title>
-<meta name="description" content="A little puzzle made with love." />
+<meta name="description" content="A little love letter made just for you." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%9C%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,13 +15,7 @@
 
 <div id="heart-field"></div>
 
-<div class="progress-dots" id="progressDots" aria-hidden="true">
-  <span class="dot" data-stage="1"></span>
-  <span class="dot" data-stage="2"></span>
-  <span class="dot" data-stage="3"></span>
-  <span class="dot" data-stage="4"></span>
-  <span class="dot" data-stage="5"></span>
-</div>
+<div class="progress-dots" id="progressDots" aria-hidden="true"></div>
 
 <main class="app" id="app">
 
@@ -29,52 +23,15 @@
   <section class="stage active" id="stage-splash">
     <p class="eyebrow reveal">a little something for</p>
     <h1 class="script-font glow reveal" id="splashName">Kunji</h1>
-    <p class="lead reveal">Before your birthday gift, there's a journey to go through.<br/>Five little steps. One big surprise.</p>
-    <button class="btn-main reveal" id="startBtn">Begin the Journey 💜</button>
+    <p class="lead reveal">Oru chinna story irukku sollanum nu nenachen... namma story thaan.<br/>Padichikitu vaa 💜</p>
+    <button class="btn-main reveal" id="startBtn">Padikka Aarambikalam 💜</button>
   </section>
 
-  <!-- Stage 1: Trivia -->
-  <section class="stage" id="stage-1">
-    <p class="stage-label">Stage 1 · Do you know us?</p>
-    <div id="triviaContainer"></div>
-  </section>
-
-  <!-- Stage 2: Riddle -->
-  <section class="stage" id="stage-2">
-    <p class="stage-label">Stage 2 · Solve the riddle</p>
-    <p class="riddle-text" id="riddleQuestion"></p>
-    <form id="riddleForm" class="answer-form" autocomplete="off">
-      <input type="text" id="riddleInput" placeholder="Your answer..." />
-      <button type="submit" class="btn-main small">Answer</button>
-    </form>
-    <p class="hint-text" id="riddleHint"></p>
-    <button class="btn-ghost" id="riddleHintBtn" type="button">Need a hint?</button>
-  </section>
-
-  <!-- Stage 3: Memory match -->
-  <section class="stage" id="stage-3">
-    <p class="stage-label">Stage 3 · Match the memories</p>
-    <div class="memory-grid" id="memoryGrid"></div>
-    <button class="btn-main" id="continueFrom3" style="display:none">Continue 💜</button>
-  </section>
-
-  <!-- Stage 4: Unscramble -->
-  <section class="stage" id="stage-4">
-    <p class="stage-label">Stage 4 · Spell it out</p>
-    <p class="lead">Tap the letters in the right order.</p>
-    <div class="answer-slots" id="answerSlots"></div>
-    <div class="letter-tiles" id="letterTiles"></div>
-    <button class="btn-main" id="continueFrom4" style="display:none">Continue 💜</button>
-  </section>
-
-  <!-- Stage 5: Hold to unlock -->
-  <section class="stage" id="stage-5">
-    <p class="stage-label">Stage 5 · The final step</p>
-    <p class="lead">Press and hold to unlock your surprise.</p>
-    <button class="hold-btn" id="holdBtn">
-      <span class="hold-fill" id="holdFill"></span>
-      <span class="hold-label">Hold Me 💝</span>
-    </button>
+  <!-- Story chapters -->
+  <section class="stage" id="stage-story">
+    <p class="stage-label" id="chapterLabel"></p>
+    <div id="chapterContent"></div>
+    <button class="btn-main" id="chapterNextBtn">Continue 💜</button>
   </section>
 
   <!-- Final reveal -->

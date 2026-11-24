@@ -11,53 +11,58 @@ const CONFIG = {
   // Birthday the countdown on the final page counts down to.
   birthdayISO: "2026-12-31T00:00:00",
 
-  // ---- Stage 1: trivia -------------------------------------------------
-  // type "mcq"  -> choices[] + correct (index)
-  // type "fill" -> answers[] of acceptable lowercase strings (any match passes)
-  trivia: [
+  // ---- Our story, told in chapters (no quizzes, just the real story) ------
+  // Each chapter: a short title + one or more paragraphs. She just taps
+  // "Continue" through them, no questions, no right/wrong answers.
+  storyChapters: [
     {
-      type: "mcq",
-      question: "Nama eppadi first pesa aarambichom?",
-      choices: [
-        "Common friend introduce pannanga",
-        "Naan unga Insta profile pathu request anuppi 'Hi' sonnen",
-        "Nee enaku DM pannitta",
-        "College la nerla paatom",
+      title: "Where it all began",
+      paragraphs: [
+        "Oru saturday night, Instagram scroll pannikittu irundhapo, un profile paathen. Konjam courage edutu request anuppi 'Hi' sonnen.",
+        "First day reply varala. Aana naan vita maatten nu adutha naalu thirumba 'Hi' sonnen — appo thaan nee reply pannina.",
       ],
-      correct: 1,
     },
     {
-      type: "mcq",
-      question: "First day naan 'Hi' sonnappo, nee enna pannina?",
-      choices: ["Udane reply pannita", "Reply pannama iruntha", "Block pannitta", "Screenshot edutha"],
-      correct: 1,
+      title: "Nee na sarcasm nu nenachika",
+      paragraphs: [
+        "Nee first ah ennai sarcasm nu, kalaikkuran nu nenachika. Naan serious nu convince panna konjam time pudichiduchu.",
+        "Aana enaku yenno, unna yengayo munnadiye paatha maari oru feel vandhuchu.",
+      ],
     },
     {
-      type: "fill",
-      question: "Rendaavathu naal naan thirumba 'Hi' sonnappo, nee enna nu nenachika? (one word)",
-      answers: ["sarcasm", "joke", "joking", "kalaichufying", "kalaichu"],
+      title: "Oru vaarathula, oru vaarthai",
+      paragraphs: [
+        "Vaaram onnu pesina odane naan propose pannen. Adutha naale nee 'okay' sonna.",
+        "Andha chinna oru vaarthai thaan en whole life ah maathichu.",
+      ],
+    },
+    {
+      title: "Namma first meet",
+      paragraphs: [
+        "Meet panna full one month aachu, but finally sandichom. Movie date, beach date, cafe date — ella memory um enaku romba pidichurukku, innaiku varaikkum.",
+      ],
+    },
+    {
+      title: "Rendu family",
+      paragraphs: [
+        "Unga appa shock aana naal irundhu, naan unga appa kooda pesi, avanga enaya pudikkira varaikkum wait pannen.",
+        "Ippo rendu side family um happy, namma engagement pathi pesikittu irukom — April la edho oru nalla date varum.",
+      ],
+    },
+    {
+      title: "Ippo",
+      paragraphs: [
+        "Indha chinna story ellam sonnathu, nee enakku evlo mukkiyam nu ninaivu vaikanum nu thaan.",
+        "Happy Birthday sollaren Kunji. Ready ah irukka?",
+      ],
     },
   ],
-
-  // ---- Stage 2: riddle ---------------------------------------------------
-  riddle: {
-    question: "“Naan unakku propose pannura munnadi, naama evlo naal mattum pesi irundhom?”",
-    answers: ["7", "one week", "1 week", "a week", "week", "oru vaaram"],
-    hint: "Weekend kooda full ah varala, adhukulla dhaan decide aagiduchu 😄",
-  },
-
-  // ---- Stage 3: memory match icons (6 pairs = 12 cards) ------------------
-  // 📱 DM · 💌 propose · 🎬 movie date · 🌊 beach date · ☕ cafe date · 💍 engagement talk
-  memoryIcons: ["📱", "💌", "🎬", "🌊", "☕", "💍"],
-
-  // ---- Stage 4: tap-the-letters phrase ------------------------------------
-  unscramblePhrase: "YOU SAID OKAY",
 
   // ---- Final reveal: photo memories ---------------------------------------
   // Leave src as null to show a placeholder box with the caption.
   // These captions are kept generic on purpose — any real photo of you two
   // fits, no need for a photo matching each specific story beat (those
-  // already live in the love letter + memory match icons above).
+  // already live in the love letter above).
   photos: [
     { src: "assets/photo1.jpg", caption: "Namma rendu peru 💜", emoji: "💜" },
     { src: "assets/photo2.webp", caption: "Unna paakkum pothe ellam smile vandhuchu 😊", emoji: "😊" },
@@ -85,17 +90,10 @@ const CONFIG = {
 // =====================================================================
 // App logic — you shouldn't need to touch anything below this line.
 // =====================================================================
-const STAGE_ORDER = [
-  "stage-splash",
-  "stage-1",
-  "stage-2",
-  "stage-3",
-  "stage-4",
-  "stage-5",
-  "stage-final",
-];
+const STAGE_ORDER = ["stage-splash", "stage-story", "stage-final"];
 
 let currentStageIndex = 0;
+let chapterIndex = 0;
 
 function goToStage(id) {
   document.querySelectorAll(".stage").forEach((el) => el.classList.remove("active"));
@@ -106,19 +104,24 @@ function goToStage(id) {
   if (id === "stage-final") triggerFinalReveal();
 }
 
+function buildProgressDots() {
+  const container = document.getElementById("progressDots");
+  container.innerHTML = "";
+  CONFIG.storyChapters.forEach(() => {
+    const dot = document.createElement("span");
+    dot.className = "dot";
+    container.appendChild(dot);
+  });
+}
+buildProgressDots();
+
 function updateProgressDots() {
   const dots = document.querySelectorAll("#progressDots .dot");
-  const puzzleStageNum = currentStageIndex; // splash=0, stage-1=1 ... stage-5=5, final=6
   dots.forEach((dot, i) => {
-    const stageNum = i + 1;
-    dot.classList.toggle("done", stageNum < puzzleStageNum);
-    dot.classList.toggle("current", stageNum === puzzleStageNum);
+    dot.classList.toggle("done", i < chapterIndex);
+    dot.classList.toggle("current", i === chapterIndex && currentStageIndex === 1);
   });
-  document.getElementById("progressDots").style.display =
-    id_visible(currentStageIndex) ? "flex" : "none";
-}
-function id_visible(idx) {
-  return idx >= 1 && idx <= 5;
+  document.getElementById("progressDots").style.display = currentStageIndex === 1 ? "flex" : "none";
 }
 updateProgressDots(); // hide dots on initial splash load
 
@@ -142,268 +145,44 @@ setInterval(spawnHeart, 450);
 // ---------------- Splash ----------------
 document.getElementById("splashName").textContent = CONFIG.nickname;
 document.getElementById("startBtn").addEventListener("click", () => {
-  goToStage("stage-1");
-  renderTrivia();
+  goToStage("stage-story");
+  renderChapter();
 });
 
-// ---------------- Stage 1: Trivia ----------------
-let triviaIndex = 0;
-function renderTrivia() {
-  const container = document.getElementById("triviaContainer");
-  if (triviaIndex >= CONFIG.trivia.length) {
-    goToStage("stage-2");
-    renderRiddle();
-    return;
-  }
-  const q = CONFIG.trivia[triviaIndex];
-  container.innerHTML = "";
+// ---------------- Story chapters ----------------
+const chapterNextBtn = document.getElementById("chapterNextBtn");
 
-  const qEl = document.createElement("p");
-  qEl.className = "trivia-question";
-  qEl.textContent = q.question;
-  container.appendChild(qEl);
+function renderChapter() {
+  const chapter = CONFIG.storyChapters[chapterIndex];
+  document.getElementById("chapterLabel").textContent =
+    `Chapter ${chapterIndex + 1} of ${CONFIG.storyChapters.length}`;
 
-  if (q.type === "mcq") {
-    const choicesEl = document.createElement("div");
-    choicesEl.className = "trivia-choices";
-    q.choices.forEach((choice, i) => {
-      const btn = document.createElement("button");
-      btn.textContent = choice;
-      btn.addEventListener("click", () => {
-        if (i === q.correct) {
-          btn.classList.add("correct");
-          setTimeout(() => {
-            triviaIndex++;
-            renderTrivia();
-          }, 500);
-        } else {
-          btn.classList.add("wrong");
-          setTimeout(() => btn.classList.remove("wrong"), 500);
-        }
-      });
-      choicesEl.appendChild(btn);
-    });
-    container.appendChild(choicesEl);
-  } else {
-    const form = document.createElement("form");
-    form.className = "answer-form";
-    form.autocomplete = "off";
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Your answer...";
-    const submit = document.createElement("button");
-    submit.type = "submit";
-    submit.className = "btn-main small";
-    submit.textContent = "Answer";
-    form.appendChild(input);
-    form.appendChild(submit);
-    container.appendChild(form);
-
-    const hint = document.createElement("p");
-    hint.className = "hint-text";
-    container.appendChild(hint);
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const val = input.value.trim().toLowerCase();
-      if (q.answers.some((a) => val.includes(a) || a.includes(val)) && val.length) {
-        triviaIndex++;
-        renderTrivia();
-      } else {
-        hint.textContent = "Not quite — try again 💭";
-      }
-    });
-  }
-}
-
-// ---------------- Stage 2: Riddle ----------------
-let riddleAttempts = 0;
-function renderRiddle() {
-  document.getElementById("riddleQuestion").textContent = CONFIG.riddle.question;
-  document.getElementById("riddleInput").value = "";
-  document.getElementById("riddleHint").textContent = "";
-  riddleAttempts = 0;
-}
-document.getElementById("riddleForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const input = document.getElementById("riddleInput");
-  const val = input.value.trim().toLowerCase();
-  const hintEl = document.getElementById("riddleHint");
-  if (CONFIG.riddle.answers.some((a) => val === a || val.includes(a))) {
-    goToStage("stage-3");
-    setupMemoryGame();
-  } else {
-    riddleAttempts++;
-    hintEl.textContent =
-      riddleAttempts >= 2 ? `Hint: ${CONFIG.riddle.hint}` : "Not quite, give it another go 💭";
-  }
-});
-document.getElementById("riddleHintBtn").addEventListener("click", () => {
-  document.getElementById("riddleHint").textContent = `Hint: ${CONFIG.riddle.hint}`;
-});
-
-// ---------------- Stage 3: Memory match ----------------
-let memoryState = { first: null, second: null, lock: false, matched: 0 };
-function setupMemoryGame() {
-  memoryState = { first: null, second: null, lock: false, matched: 0 };
-  const grid = document.getElementById("memoryGrid");
-  grid.innerHTML = "";
-  document.getElementById("continueFrom3").style.display = "none";
-
-  const icons = [...CONFIG.memoryIcons, ...CONFIG.memoryIcons];
-  for (let i = icons.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [icons[i], icons[j]] = [icons[j], icons[i]];
-  }
-
-  icons.forEach((icon) => {
-    const card = document.createElement("div");
-    card.className = "memory-card";
-    card.dataset.icon = icon;
-    card.textContent = "❓";
-    card.addEventListener("click", () => handleCardClick(card));
-    grid.appendChild(card);
-  });
-}
-function handleCardClick(card) {
-  if (memoryState.lock || card.classList.contains("flipped") || card.classList.contains("matched")) return;
-  card.classList.add("flipped");
-  card.textContent = card.dataset.icon;
-
-  if (!memoryState.first) {
-    memoryState.first = card;
-    return;
-  }
-  memoryState.second = card;
-  memoryState.lock = true;
-
-  if (memoryState.first.dataset.icon === memoryState.second.dataset.icon) {
-    memoryState.first.classList.add("matched");
-    memoryState.second.classList.add("matched");
-    memoryState.matched++;
-    resetMemoryTurn();
-    if (memoryState.matched === CONFIG.memoryIcons.length) {
-      document.getElementById("continueFrom3").style.display = "inline-block";
-    }
-  } else {
-    setTimeout(() => {
-      memoryState.first.classList.remove("flipped");
-      memoryState.second.classList.remove("flipped");
-      memoryState.first.textContent = "❓";
-      memoryState.second.textContent = "❓";
-      resetMemoryTurn();
-    }, 700);
-  }
-}
-function resetMemoryTurn() {
-  memoryState.first = null;
-  memoryState.second = null;
-  memoryState.lock = false;
-}
-document.getElementById("continueFrom3").addEventListener("click", () => {
-  goToStage("stage-4");
-  setupUnscramble();
-});
-
-// ---------------- Stage 4: Tap the letters ----------------
-let unscrambleTarget = [];
-let unscrambleProgress = 0;
-function setupUnscramble() {
-  const phrase = CONFIG.unscramblePhrase.toUpperCase();
-  unscrambleTarget = phrase.split("");
-  unscrambleProgress = 0;
-
-  const slotsEl = document.getElementById("answerSlots");
-  slotsEl.innerHTML = "";
-  unscrambleTarget.forEach((ch) => {
-    const slot = document.createElement("span");
-    if (ch === " ") {
-      slot.className = "slot space";
-    } else {
-      slot.className = "slot";
-    }
-    slotsEl.appendChild(slot);
+  const content = document.getElementById("chapterContent");
+  content.innerHTML = "";
+  const title = document.createElement("h2");
+  title.textContent = chapter.title;
+  content.appendChild(title);
+  chapter.paragraphs.forEach((text, i) => {
+    const p = document.createElement("p");
+    p.textContent = text;
+    p.style.animationDelay = `${i * 0.25}s`;
+    p.classList.add("reveal");
+    content.appendChild(p);
   });
 
-  const letters = unscrambleTarget.filter((c) => c !== " ");
-  const shuffled = [...letters];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
+  chapterNextBtn.textContent =
+    chapterIndex === CONFIG.storyChapters.length - 1 ? "Open Your Surprise 💜" : "Continue 💜";
 
-  const tilesEl = document.getElementById("letterTiles");
-  tilesEl.innerHTML = "";
-  document.getElementById("continueFrom4").style.display = "none";
-
-  shuffled.forEach((letter) => {
-    const btn = document.createElement("button");
-    btn.textContent = letter;
-    btn.addEventListener("click", () => handleLetterTap(btn, letter));
-    tilesEl.appendChild(btn);
-  });
+  updateProgressDots();
 }
-function handleLetterTap(btn, letter) {
-  const slots = document.querySelectorAll("#answerSlots .slot:not(.space)");
-  // find next empty non-space target index
-  let nextExpected = null;
-  let filled = 0;
-  for (const ch of unscrambleTarget) {
-    if (ch === " ") continue;
-    if (filled < unscrambleProgress) { filled++; continue; }
-    nextExpected = ch;
-    break;
-  }
-  if (letter === nextExpected) {
-    slots[unscrambleProgress].textContent = letter;
-    unscrambleProgress++;
-    btn.disabled = true;
-    if (unscrambleProgress === slots.length) {
-      document.getElementById("continueFrom4").style.display = "inline-block";
-    }
+chapterNextBtn.addEventListener("click", () => {
+  chapterIndex++;
+  if (chapterIndex >= CONFIG.storyChapters.length) {
+    goToStage("stage-final");
   } else {
-    btn.classList.add("shake");
-    setTimeout(() => btn.classList.remove("shake"), 300);
+    renderChapter();
   }
-}
-document.getElementById("continueFrom4").addEventListener("click", () => {
-  goToStage("stage-5");
 });
-
-// ---------------- Stage 5: Hold to unlock ----------------
-const holdBtn = document.getElementById("holdBtn");
-const holdFill = document.getElementById("holdFill");
-let holdTimer = null;
-let holdProgress = 0;
-const HOLD_DURATION_MS = 1800;
-
-function startHold() {
-  if (holdTimer) return;
-  holdProgress = 0;
-  holdTimer = setInterval(() => {
-    holdProgress += 40;
-    const pct = Math.min(100, (holdProgress / HOLD_DURATION_MS) * 100);
-    holdFill.style.height = pct + "%";
-    if (holdProgress >= HOLD_DURATION_MS) {
-      clearInterval(holdTimer);
-      holdTimer = null;
-      goToStage("stage-final");
-    }
-  }, 40);
-}
-function cancelHold() {
-  if (holdTimer) {
-    clearInterval(holdTimer);
-    holdTimer = null;
-  }
-  holdProgress = 0;
-  holdFill.style.height = "0%";
-}
-holdBtn.addEventListener("mousedown", startHold);
-holdBtn.addEventListener("touchstart", (e) => { e.preventDefault(); startHold(); }, { passive: false });
-["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((evt) =>
-  holdBtn.addEventListener(evt, cancelHold)
-);
 
 // ---------------- Final reveal ----------------
 let revealed = false;

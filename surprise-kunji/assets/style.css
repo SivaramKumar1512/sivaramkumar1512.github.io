@@ -157,122 +157,23 @@ h1 { font-size: clamp(2.6rem, 8vw, 5rem); margin: 0.2em 0; line-height: 1.1; }
   100% { transform: translateY(-110vh) translateX(var(--drift, 20px)) rotate(25deg); opacity: 0; }
 }
 
-/* ============ Trivia ============ */
-#triviaContainer { max-width: 30rem; width: 100%; }
-.trivia-question { font-size: 1.15rem; margin-bottom: 1.2rem; }
-.trivia-choices { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; }
-.trivia-choices button {
-  background: rgba(243, 233, 255, 0.06);
-  border: 1px solid rgba(243, 233, 255, 0.18);
-  color: var(--text);
-  padding: 0.8em 1em;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
+/* ============ Story chapters ============ */
+#chapterContent {
+  max-width: 34rem;
+  margin-bottom: 2rem;
 }
-.trivia-choices button:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.1); }
-.trivia-choices button.correct { background: rgba(80, 200, 120, 0.25); border-color: #50c878; }
-.trivia-choices button.wrong { background: rgba(220, 80, 80, 0.25); border-color: #dc5050; }
-
-.answer-form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
-.answer-form input {
-  background: rgba(243, 233, 255, 0.06);
-  border: 1px solid rgba(243, 233, 255, 0.25);
-  color: var(--text);
-  padding: 0.8em 1em;
-  border-radius: 12px;
-  font-size: 1rem;
-  min-width: 14rem;
-}
-.answer-form input:focus { outline: none; border-color: var(--gold); }
-
-.riddle-text { max-width: 30rem; font-style: italic; color: var(--text-dim); margin-bottom: 1.6rem; font-size: 1.1rem; }
-.hint-text { color: var(--gold-soft); min-height: 1.4em; margin-top: 0.8rem; }
-
-/* ============ Memory match ============ */
-.memory-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(60px, 80px));
-  gap: 0.7rem;
-  margin-bottom: 1.6rem;
-}
-.memory-card {
-  aspect-ratio: 1;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--bg-2), var(--bg-1));
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-.memory-card.flipped, .memory-card.matched {
-  background: linear-gradient(135deg, var(--pink), var(--purple));
-  transform: rotateY(360deg);
-}
-.memory-card.matched { opacity: 0.55; cursor: default; }
-
-/* ============ Unscramble ============ */
-.answer-slots { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem; margin-bottom: 1.6rem; max-width: 26rem; }
-.answer-slots .slot {
-  width: 1.6rem;
-  height: 2rem;
-  border-bottom: 2px solid var(--gold);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-.answer-slots .slot.space { border-bottom: none; width: 0.8rem; }
-.letter-tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 24rem; }
-.letter-tiles button {
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 10px;
-  border: 1px solid rgba(243, 233, 255, 0.25);
-  background: rgba(243, 233, 255, 0.06);
-  color: var(--text);
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-.letter-tiles button:disabled { opacity: 0.25; cursor: default; }
-.letter-tiles button.shake { animation: shake 0.3s ease; }
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
-}
-
-/* ============ Hold to unlock ============ */
-.hold-btn {
-  position: relative;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  background: rgba(155, 89, 255, 0.08);
+#chapterContent h2 {
+  font-family: 'Great Vibes', cursive;
   color: var(--gold-soft);
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  overflow: hidden;
-  touch-action: none;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  margin: 0 0 0.8rem;
 }
-.hold-fill {
-  position: absolute;
-  left: 0; bottom: 0; right: 0;
-  height: 0%;
-  background: linear-gradient(0deg, var(--pink), var(--purple));
-  opacity: 0.6;
-  transition: height 0.05s linear;
+#chapterContent p {
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin: 0 0 1em;
 }
-.hold-label { position: relative; z-index: 1; }
 
 /* ============ Final reveal ============ */
 #stage-final { gap: 0.4rem; }
