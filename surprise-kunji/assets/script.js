@@ -18,42 +18,42 @@ const CONFIG = {
     {
       title: "Where it all began",
       paragraphs: [
-        "Oru saturday night, Instagram scroll pannikittu irundhapo, un profile paathen. Konjam courage edutu request anuppi 'Hi' sonnen.",
-        "First day reply varala. Aana naan vita maatten nu adutha naalu thirumba 'Hi' sonnen — appo thaan nee reply pannina.",
+        "One Saturday night, I was scrolling through Instagram and saw your profile. Konjam courage edutu, I sent a request and said 'Hi'.",
+        "You didn't reply that day. But naan vida maatten — the next day I said 'Hi' again, and appo thaan you finally replied.",
       ],
     },
     {
-      title: "Nee na sarcasm nu nenachika",
+      title: "You thought I was joking",
       paragraphs: [
-        "Nee first ah ennai sarcasm nu, kalaikkuran nu nenachika. Naan serious nu convince panna konjam time pudichiduchu.",
-        "Aana enaku yenno, unna yengayo munnadiye paatha maari oru feel vandhuchu.",
+        "At first you thought I was being sarcastic, konjam kalaikkuran nu nenachika. It took me a while to convince you I was serious.",
+        "But honestly, enaku yenno oru feel irundhuchu — like I'd seen you somewhere before, yengayo.",
       ],
     },
     {
-      title: "Oru vaarathula, oru vaarthai",
+      title: "One week, one word",
       paragraphs: [
-        "Vaaram onnu pesina odane naan propose pannen. Adutha naale nee 'okay' sonna.",
-        "Andha chinna oru vaarthai thaan en whole life ah maathichu.",
+        "We'd barely been talking for a week when I proposed. The very next day, you said 'okay'.",
+        "That one chinna word changed my whole life.",
       ],
     },
     {
-      title: "Namma first meet",
+      title: "Our first meet",
       paragraphs: [
-        "Meet panna full one month aachu, but finally sandichom. Movie date, beach date, cafe date — ella memory um enaku romba pidichurukku, innaiku varaikkum.",
+        "It took a full month before we actually met, but it was worth the wait. Movie date, beach date, cafe date — every memory is still romba special to me, even now.",
       ],
     },
     {
-      title: "Rendu family",
+      title: "Two families",
       paragraphs: [
-        "Unga appa shock aana naal irundhu, naan unga appa kooda pesi, avanga enaya pudikkira varaikkum wait pannen.",
-        "Ippo rendu side family um happy, namma engagement pathi pesikittu irukom — April la edho oru nalla date varum.",
+        "The day your dad found out, he was shocked. I talked to him myself, and waited patiently until he liked me.",
+        "Ippo both our families are happy, and we're already talking about engagement — edho a good date in April.",
       ],
     },
     {
-      title: "Ippo",
+      title: "Now",
       paragraphs: [
-        "Indha chinna story ellam sonnathu, nee enakku evlo mukkiyam nu ninaivu vaikanum nu thaan.",
-        "Happy Birthday sollaren Kunji. Ready ah irukka?",
+        "I wanted to tell you this little story just so you'd know how much you mean to me.",
+        "Happy Birthday, Kunji. Ready for what's next?",
       ],
     },
   ],
@@ -64,27 +64,27 @@ const CONFIG = {
   // fits, no need for a photo matching each specific story beat (those
   // already live in the love letter above).
   photos: [
-    { src: "assets/photo1.jpg", caption: "Namma rendu peru 💜", emoji: "💜" },
-    { src: "assets/photo2.webp", caption: "Unna paakkum pothe ellam smile vandhuchu 😊", emoji: "😊" },
-    { src: "assets/photo3.jpg", caption: "Enga best memories ellam ippadithaan 🤍", emoji: "🤍" },
-    { src: "assets/photo4.webp", caption: "Namma pannicha first outing 🧡", emoji: "🧡" },
-    { src: "assets/photo5.jpg", caption: "Enga oru chinna world 🤍", emoji: "🤍" },
+    { src: "assets/photo1.jpg", caption: "Just the two of us 💜", emoji: "💜" },
+    { src: "assets/photo2.webp", caption: "You make me smile every single time 😊", emoji: "😊" },
+    { src: "assets/photo3.jpg", caption: "Some of our best memories, romba special 🤍", emoji: "🤍" },
+    { src: "assets/photo4.webp", caption: "One of our first outings together 🧡", emoji: "🧡" },
+    { src: "assets/photo5.jpg", caption: "Our own chinna little world 🤍", emoji: "🤍" },
   ],
 
   // ---- Final reveal: the love letter (each string = one paragraph) --------
   loveLetter: [
     "Kunji,",
-    "Oru naal Instagram scroll pannikittu irundhapo, unga profile pathen, request anuppi 'Hi' sonnen. First day reply varala. Adutha naalu naan again 'Hi' sonnen, appo thaan nee reply pannina.",
-    "Nee first ah ennai sarcasm nu nenachika, naan serious nu convince panna konjam time pudichiduchu. Aana enaku yenno unna yengayo patha maari oru feel vandhuchu.",
-    "Vaaram onnu pesina odane naan propose pannen, adutha naale nee 'okay' sonna — andha chinna oru vaarthai thaan namma full story ah maathichu.",
-    "Meet panna full one month aachu, but finally sandichom — movie date, beach date, cafe date, ella memory um enaku romba pidichurukku.",
-    "Unga appa shock aana naal irundhu, naan unga appa kooda pesi, avanga enaya pudikkira varaikkum wait pannen. Ippo rendu side family um happy, namma engagement pathi pesikittu irukom — April la edho oru nalla date varum.",
-    "I love you Kunji. Indha journey mulusa unakkaga thaan — happy birthday en pakka favorite person 💜",
+    "One Saturday night I was scrolling through Instagram, saw your profile, and sent a request with a simple 'Hi'. You didn't reply that day. The next day naan thirumba sonnen 'Hi' — and appo thaan you finally replied.",
+    "You thought I was being sarcastic at first, and it took me a while to convince you I was serious. But I had this feeling, yenno, like I'd seen you somewhere before.",
+    "We'd barely talked for a week when I proposed, and the very next day you said 'okay' — that one chinna word changed my whole story.",
+    "It took a full month before we actually met, but we finally did — movie date, beach date, cafe date, and every memory from then is still romba special.",
+    "Your dad was shocked when he found out. I talked to him myself and waited until he started liking me. Ippo both families are happy, and we're already talking engagement — oru nalla date in April.",
+    "I love you, Kunji. This whole journey has been for you — happy birthday, en pakka favorite person 💜",
   ],
 
   // ---- Final reveal: the extra surprise text (edit this with your actual plan!) ----
   specialSurprise:
-    "P.S. — Engagement pathi namma pesikittu irukom, April la edho oru special date wait pannikittu irukku... adhu varaikkum idha oru chinna reminder ah vechikko, naan unna evlo love pannuren nu 👀💍",
+    "P.S. — We're already talking about engagement, and there's a special date coming up in April... konjam patience pannu, just know evlo love I have for you 👀💍",
 };
 
 // =====================================================================
