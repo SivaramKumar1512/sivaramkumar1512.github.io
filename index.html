@@ -17,12 +17,14 @@
   <div class="wrap">
     <a class="brand" href="#top">SK<span class="dot">.</span></a>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a href="https://github.com/SivaramKumar1512?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-scroll">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/SivaramKumar1512?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      </div>
       <a class="btn-resume-small" href="assets/resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
     </div>
   </div>
@@ -365,8 +367,13 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
+    // Safety net: if a visitor lands mid-page (direct anchor link, restored scroll
+    // position, etc.) and an element never crosses the threshold, don't leave it invisible.
+    setTimeout(function () {
+      reveals.forEach(function (el) { el.classList.add('in-view'); });
+    }, 2000);
   } else {
     reveals.forEach(function (el) { el.classList.add('in-view'); });
   }

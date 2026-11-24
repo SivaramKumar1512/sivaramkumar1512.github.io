@@ -17,6 +17,7 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; max-width: 100%; }
 
 body {
   margin: 0;
@@ -87,10 +88,20 @@ a:hover { text-decoration: underline; }
   background: rgba(11, 15, 25, 0.8);
   border-bottom: 1px solid var(--border);
 }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.brand { font-weight: 700; font-size: 1.2rem; color: var(--text); letter-spacing: .5px; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { flex: 0 0 auto; font-weight: 700; font-size: 1.2rem; color: var(--text); letter-spacing: .5px; }
 .brand .dot { color: var(--accent-2); }
-.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.nav-scroll {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.nav-scroll::-webkit-scrollbar { display: none; }
+.nav-scroll a { white-space: nowrap; }
 .nav-links a { color: var(--text-dim); font-size: .95rem; }
 .nav-links a:hover { color: var(--text); text-decoration: none; }
 .nav-links a:not(.btn-resume-small) { position: relative; padding-bottom: 2px; }
@@ -106,6 +117,7 @@ a:hover { text-decoration: underline; }
 }
 .nav-links a:not(.btn-resume-small):hover::after { width: 100%; }
 .btn-resume-small {
+  flex: 0 0 auto;
   border: 1px solid var(--border);
   padding: 6px 14px;
   border-radius: 999px;
@@ -206,7 +218,7 @@ section.no-border { border-top: none; padding-top: 0; }
 .tl-content li { margin-bottom: 6px; }
 
 /* Project cards */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -245,15 +257,16 @@ section.no-border { border-top: none; padding-top: 0; }
 }
 
 /* Stats row (used on the KnightFork card) */
-.stats-row { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 16px; }
+.stats-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
 .stat {
   display: flex;
   flex-direction: column;
+  flex: 1 1 130px;
+  min-width: 0;
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 10px 14px;
-  min-width: 120px;
   transition: transform .2s ease, border-color .2s ease;
 }
 .stat:hover { transform: translateY(-3px); border-color: var(--ai); }
@@ -284,8 +297,12 @@ details.more p {
   .card-highlight { grid-column: span 1; }
 }
 
+@media (max-width: 560px) {
+  .grid, .skills-grid { grid-template-columns: 1fr; }
+}
+
 /* Skills */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
 .skill-group {
   background: var(--card);
   border: 1px solid var(--border);
@@ -301,8 +318,12 @@ details.more p {
 footer .footer-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
 .footer-note { color: var(--text-dim); font-size: .85rem; margin: 0; }
 
+@media (max-width: 900px) {
+  .nav-scroll { gap: 14px; }
+  .nav-links a { font-size: .85rem; }
+}
+
 @media (max-width: 640px) {
-  .nav-links { gap: 12px; }
-  .nav-links a:not(.btn-resume-small) { display: none; }
+  .nav-scroll { gap: 12px; max-width: 48vw; }
   .hero h1 { font-size: 2.2rem; }
 }
