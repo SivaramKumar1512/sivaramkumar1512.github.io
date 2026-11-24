@@ -16,44 +16,44 @@ const CONFIG = {
   // "Continue" through them, no questions, no right/wrong answers.
   storyChapters: [
     {
-      title: "Where it all began",
+      title: "Where It All Began",
       paragraphs: [
-        "One Saturday night, I was scrolling through Instagram and saw your profile. Konjam courage edutu, I sent a request and said 'Hi'.",
-        "You didn't reply that day. But naan vida maatten — the next day I said 'Hi' again, and appo thaan you finally replied.",
+        "One Saturday night, I was scrolling through Instagram when I came across your profile. I gathered up some courage, sent a request, and simply said 'Hi'.",
+        "You didn't reply that day. But I wasn't ready to give up so easily — so the next day, I said 'Hi' again. And that's when you finally replied.",
       ],
     },
     {
-      title: "You thought I was joking",
+      title: "You Thought I Was Joking",
       paragraphs: [
-        "At first you thought I was being sarcastic, konjam kalaikkuran nu nenachika. It took me a while to convince you I was serious.",
-        "But honestly, enaku yenno oru feel irundhuchu — like I'd seen you somewhere before, yengayo.",
+        "At first, you thought I was just teasing you, that I couldn't possibly be serious. It took me a little while to convince you that I was.",
+        "But honestly, the moment I saw you, I had this strange feeling — like I had seen you somewhere before, like I already knew you.",
       ],
     },
     {
-      title: "One week, one word",
+      title: "One Week, One Word",
       paragraphs: [
-        "We'd barely been talking for a week when I proposed. The very next day, you said 'okay'.",
-        "That one chinna word changed my whole life.",
+        "We had barely been talking for a week when I worked up the courage to tell you how I felt. The very next day, you said 'okay'.",
+        "That one small word changed the course of my entire life.",
       ],
     },
     {
-      title: "Our first meet",
+      title: "Our First Meeting",
       paragraphs: [
-        "It took a full month before we actually met, but it was worth the wait. Movie date, beach date, cafe date — every memory is still romba special to me, even now.",
+        "It took a full month before we finally met in person, but every bit of that wait was worth it. Our first movie date, our first walk on the beach, our first coffee together — every memory from that time still means the world to me.",
       ],
     },
     {
-      title: "Two families",
+      title: "Two Families, One Story",
       paragraphs: [
-        "The day your dad found out, he was shocked. I talked to him myself, and waited patiently until he liked me.",
-        "Ippo both our families are happy, and we're already talking about engagement — edho a good date in April.",
+        "The day your father found out about us, he was shocked. I went and spoke with him myself, and I waited patiently until he came around and grew to like me.",
+        "Now both our families are happy for us, and we've already started talking about getting engaged — hopefully on a good date sometime in April.",
       ],
     },
     {
       title: "Now",
       paragraphs: [
-        "I wanted to tell you this little story just so you'd know how much you mean to me.",
-        "Happy Birthday, Kunji. Ready for what's next?",
+        "I wanted you to hear this story again, from the very beginning, so you'd know just how much you mean to me.",
+        "Happy Birthday, Kunji. Are you ready for what's next?",
       ],
     },
   ],
@@ -65,26 +65,26 @@ const CONFIG = {
   // already live in the love letter above).
   photos: [
     { src: "assets/photo1.jpg", caption: "Just the two of us 💜", emoji: "💜" },
-    { src: "assets/photo2.webp", caption: "You make me smile every single time 😊", emoji: "😊" },
-    { src: "assets/photo3.jpg", caption: "Some of our best memories, romba special 🤍", emoji: "🤍" },
+    { src: "assets/photo2.webp", caption: "You make me smile, every single time 😊", emoji: "😊" },
+    { src: "assets/photo3.jpg", caption: "Some of our favorite memories together 🤍", emoji: "🤍" },
     { src: "assets/photo4.webp", caption: "One of our first outings together 🧡", emoji: "🧡" },
-    { src: "assets/photo5.jpg", caption: "Our own chinna little world 🤍", emoji: "🤍" },
+    { src: "assets/photo5.jpg", caption: "Our own little world 🤍", emoji: "🤍" },
   ],
 
   // ---- Final reveal: the love letter (each string = one paragraph) --------
   loveLetter: [
     "Kunji,",
-    "One Saturday night I was scrolling through Instagram, saw your profile, and sent a request with a simple 'Hi'. You didn't reply that day. The next day naan thirumba sonnen 'Hi' — and appo thaan you finally replied.",
-    "You thought I was being sarcastic at first, and it took me a while to convince you I was serious. But I had this feeling, yenno, like I'd seen you somewhere before.",
-    "We'd barely talked for a week when I proposed, and the very next day you said 'okay' — that one chinna word changed my whole story.",
-    "It took a full month before we actually met, but we finally did — movie date, beach date, cafe date, and every memory from then is still romba special.",
-    "Your dad was shocked when he found out. I talked to him myself and waited until he started liking me. Ippo both families are happy, and we're already talking engagement — oru nalla date in April.",
-    "I love you, Kunji. This whole journey has been for you — happy birthday, en pakka favorite person 💜",
+    "One Saturday night, I was scrolling through Instagram when I found your profile. I sent a request and said a simple 'Hi'. You didn't reply that day, but I tried again the next day — and that's when everything started.",
+    "You thought I was joking at first, and it took some time to convince you that I meant every word. But somehow, I felt like I had known you long before that day.",
+    "We had only been talking for a week when I told you how I felt, and the very next day, you said 'okay' — one small word that changed my whole story.",
+    "It took a month before we finally met, but it was worth every bit of the wait — our first movie, our first walk on the beach, our first coffee together. Every memory since then has stayed close to my heart.",
+    "Your dad was shocked when he first found out, so I spoke with him myself and waited patiently until he came to like me. Now both our families are happy, and we're already talking about getting engaged sometime in April.",
+    "I love you, Kunji. This entire journey has been for you — happy birthday to my favorite person in the whole world 💜",
   ],
 
   // ---- Final reveal: the extra surprise text (edit this with your actual plan!) ----
   specialSurprise:
-    "P.S. — We're already talking about engagement, and there's a special date coming up in April... konjam patience pannu, just know evlo love I have for you 👀💍",
+    "P.S. — We're already talking about getting engaged, and there's a special date coming up in April. Keep this as a little reminder until then of just how much I love you 👀💍",
 };
 
 // =====================================================================
